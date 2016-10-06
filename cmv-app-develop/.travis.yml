@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+- '5'
+sudo: false
+before_install: npm install -g grunt-cli
+before_script: grunt build --verbose
+deploy:
+  provider: releases
+  api_key:
+    secure: RH6f8GbwwkXZvoxOS88NhOhEAfFHL52wQ9cadmzPTCnqNNVeC5GhAvwoNvBTobZhB+Jt0W9oVQt2WTnAomxC9cqh07fSqLBk8I8UpuhRkmL+AZPwnquDxD9Bi6yNAgwd5IQfMqP251Qlzfwe7ffL42yAsjGfJOoliZRvfQyKQho=
+  file: dist/viewer.zip
+  on:
+    tags: true
+    all_branches: true
+  skip_cleanup: true
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/f92bdb739985993b4e60
+    on_success: change  # options: [always|never|change] default: always
+    on_failure: always  # options: [always|never|change] default: always
+  slack:
+    secure: Q8I5Lrp5XYsBZuyrWZCIu8Xi1Gti5E8Mpj9UYHDl2nfQlUyCDLRkRi4UlvcvuesWEy2MWlx6A3tBajMVF5582jucWyHxAP/+rff3QniHTIKaeBGhzWFGVte7CWbJ4QjYGN0Wjkf1Ixp9umU3AJSQ2CzS46kVQmTL4PnlhpQbVFg=
